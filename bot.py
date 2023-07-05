@@ -1,3 +1,29 @@
+import ffmpeg
+
+def resize_video(input_file, output_file, width, height):
+    """Resizes a video file.
+
+    Args:
+        input_file (str): The input video file.
+        output_file (str): The output video file.
+        width (int): The desired width of the output video.
+        height (int): The desired height of the output video.
+    """
+
+    stream = ffmpeg.input(input_file)
+    stream = stream.resize(width, height)
+    stream.output(output_file)
+
+if __name__ == '__main__':
+    input_file = 'input.mp4'
+    output_file = 'output.mp4'
+    width = 1280
+    height = 720
+
+    resize_video(input_file, output_file, width, height)
+
+
+
 import logging
 import logging.config
 from pyrogram import Client 
